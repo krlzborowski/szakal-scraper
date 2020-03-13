@@ -1,9 +1,7 @@
 from scraper import Scraper
-
 import mechanize
 import http.cookiejar as cj
 from authenticator import Authenticator
-
 
 
 class App:
@@ -16,9 +14,9 @@ class App:
     def run(self):
         self.make_browser()
         self.auth.set_credentials()
-        r = self.auth.log_in()
+        self.auth.log_in()
         self.sc.count_statuses()
-
+        self.sc.print_results()
 
     def make_browser(self):
         cookie_jar = cj.CookieJar()
