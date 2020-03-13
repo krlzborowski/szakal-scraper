@@ -18,11 +18,14 @@ class Scraper:
     def count_statuses(self):
         r = self.br.open(URL_TAKEN_COMPANIES)
         soup = BeautifulSoup(r, 'html5lib')
-
         for k in self.statuses.keys():
             res = soup.find_all('td', string=re.compile(k))
             self.statuses[k] = len(res)
 
     def print_results(self):
+        count = 0
         for k, v in self.statuses.items():
-            print(k + ': ' + str(v))
+            print('{0:<45} {1:>5}'.format(k, str(v)))
+            count += v
+
+        print("\nOgółem: {0:>43}".format(str(count)))
