@@ -1,6 +1,6 @@
 from getpass import getpass
 
-URL = "http://baza-firm.lysik.pl/user/login"
+URL_LOGIN = "http://baza-firm.lysik.pl/user/login"
 
 
 class Authenticator:
@@ -16,7 +16,7 @@ class Authenticator:
         self.credentials['password'] = password
 
     def log_in(self):
-        self.br.open(URL)
+        self.br.open(URL_LOGIN)
         self.br.select_form(nr=0)
         self.br.form['login_username'] = self.credentials['username']
         self.br.form['login_password'] = self.credentials['password']
